@@ -16,4 +16,7 @@ describe("Sanity Check", function() {
     LoginPages.login(user.email, user.password);
     cy.log("Course enrollment successful");
   });
-});
+}); 
+
+
+// changes done 
