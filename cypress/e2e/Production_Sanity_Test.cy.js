@@ -31,6 +31,7 @@ describe("Sanity Check", () => {
     const user = this.userData.Demoiihtlogincred;
     const user_and_usergroup_creatoins= new user_and_usergroup_creatoin();
     user_and_usergroup_creatoins.create_method(user.email,user.password)
+    cy.log("User and User group created successfully");
     /*cy.visit("https://demoiiht.techademy.com/")
     cy.get('button[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-mo6xr9"][type="button"]').click()
     cy.get('[name="username"]').click().type(user.email)
@@ -458,7 +459,7 @@ it.skip('LP Creation', () =>{
      
     })
 
-
+//git add testing teja
 
 
 
