@@ -457,9 +457,7 @@ it.skip('LP Creation', () =>{
       })
       cy.wait(5000)
      
-    })
-
-//git add testing teja
+    })                                     //git add testing teja
 
 
 
