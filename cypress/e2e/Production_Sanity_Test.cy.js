@@ -457,7 +457,7 @@ it.skip('LP Creation', () =>{
       })
       cy.wait(5000)
      
-    })                                     //git add testing karala
+    })                                     //git add testing ayapa
     
 
 
