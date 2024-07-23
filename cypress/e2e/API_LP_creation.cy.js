@@ -86,7 +86,7 @@ describe("API Testing", () => {
         }
     }).then((response) => {
         expect(response.status).to.eq(201);
-        cy.log(response.status)
+        cy.log(response.status);
     })
 
   })
