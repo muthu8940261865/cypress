@@ -386,7 +386,7 @@ it.skip('LP Creation', () =>{
       })
       cy.wait(5000)
      
-    })                                     //git add testing KD
+    })                                     //git add testing KD.
     
 
 
