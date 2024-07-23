@@ -107,6 +107,7 @@ describe("Sanity Check", () => {
  
     it("course creation", () => {
     cy.viewport(1500, 1500);
+    
     cy.visit("https://demoiiht.techademy.com/internal-login")
     cy.get('button[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-mo6xr9"][type="button"]').click()
     cy.get('[name="username"]').click().type("darshan.kumar@mailinator.com")
@@ -385,7 +386,7 @@ it.skip('LP Creation', () =>{
       })
       cy.wait(5000)
      
-    })                                     //git add testing karala
+    })                                     //git add testing KD
     
 
 
