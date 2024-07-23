@@ -65,7 +65,7 @@ class LoginPage {
     }
     assign_button(){
         cy.get('#root > div.MuiStack-root.css-83v8al > div.MuiStack-root.css-1fxhkkd > div > div.MuiContainer-root.MuiContainer-maxWidthXl.MuiContainer-disableGutters.css-nmbyqj > div > div > div > div > form > div.MuiStack-root.css-1ei7itv > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.css-xlmuuu').click();
-        cy.wait(1000)
+        cy.wait(1000);
     }
     assert_condition(){
         cy.get('#root > div.Toastify', { timeout: 20000 }).should("have.text", "Assigned Successfully");
