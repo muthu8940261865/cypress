@@ -91,10 +91,11 @@ class user_and_usergroup_creatoin{
     }
     manager_dropdown(){
         cy.get('input[id="tags-filled"][class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-1uvydh2"]').click().type("{downarrow}{enter}")
+        cy.wait(4000)
     }
     api_using_create(){
         cy.intercept('POST', 'https://core-prod-api.techademy.com/api/v1/access/control/user/group/cud/').as('usergroup_creation')
-        cy.get('button[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth css-seuxbh"][type="submit"]').click()
+        cy.get('button[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth css-seuxbh"][type="submit"]').click();
         cy.wait('@usergroup_creation').then((interception) => {
             // Validate that the response status is 201
             expect(interception.response.statusCode).to.equal(201);

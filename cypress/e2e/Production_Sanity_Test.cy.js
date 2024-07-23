@@ -6,6 +6,8 @@ import 'cypress-file-upload';
 import LoginPage from '../components/LoginPage'
 import reportgeneratoin from '../components/reportgeneration';
 import user_and_usergroup_creatoin from '../components/user_and_usergroup_creatoin';
+import certificate_creation from '../components/certificate_creation';
+import catalogue_creation from '../components/catalogue_creation';
 
 describe("Sanity Check", () => {
   beforeEach(function() {
@@ -16,6 +18,7 @@ describe("Sanity Check", () => {
   it.skip("Tests Demoiiht login & course enrollment", function() {
     cy.viewport(1500, 1500);
     const user = this.userData.Demoiihtlogincred;
+    console.log(user)
     const loginandassign=new LoginPage();
     loginandassign.login(user.email,user.password);
   })
@@ -26,7 +29,22 @@ describe("Sanity Check", () => {
     repgen.repgenmethod(user.email,user.password)
     cy.log("report generated successfully")
   })
-  it("User & UserGroup Creation", function() {
+  it.skip("certificate Creation", function(){
+    cy.viewport(1500, 1500);
+    const users = this.userData.Demoiihtlogincred;
+    const certificateee = new certificate_creation();
+    certificateee.certificate_method(users.email,users.password);
+    cy.wait(5000)
+   });
+   it.skip("Catalogue_creation", function(){
+    cy.viewport(1500,1500)
+    const user = this.userData.Demoiihtlogincred;
+    const catalogue_creations = new catalogue_creation();
+    catalogue_creations.catalogue_creation_method(user.email,user.password)
+
+   })
+
+  it.skip("User & UserGroup Creation", function() {
     cy.viewport(1500, 1500);
     const user = this.userData.Demoiihtlogincred;
     const user_and_usergroup_creatoins= new user_and_usergroup_creatoin();
@@ -86,98 +104,8 @@ describe("Sanity Check", () => {
     cy.wait(5000)*/
     })
   })
-  it.skip("certificate Creation", () => {
-    cy.viewport(1500, 1500);
-    cy.visit("https://demoiiht.techademy.com/")
-    cy.get('button[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-mo6xr9"][type="button"]').click()
-    cy.get('[name="username"]').click().type("darshan.kumar@mailinator.com")
-    cy.get('[name="password"]').type("Tr0ngP@ssw0rd!")
-    cy.get('#root > div.MuiGrid-root.MuiGrid-container.css-1d3bbye > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-6.css-eph4u6 > div > div > div > form > div > div.MuiStack-root.css-q7yo2q > div:nth-child(2) > button').click()
-    cy.get('#basic-button').trigger('mouseover');
-    cy.get('#basic-button > div.MuiStack-root.css-1d2q9lm').contains('Certificates').click()
-    cy.get('button[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-y3og1h"][type="button"]').click()
-    let certificateCounter = 1
-    function generateRandomFiveDigitNumber() {
-      return Math.floor(10000 + Math.random() * 90000);
-    }
-
-    function generateCertificateName() {
-    const baseName = "Certificate of Completion";
-    const suffix = `Automation ${generateRandomFiveDigitNumber()}`;
-    const certificateName = `${baseName} - ${suffix}`;
-  
-    certificateCounter++; 
-  
-    return certificateName;
-    }
-    cy.log(generateCertificateName())
-    cy.get('input[name="name"][class="MuiInputBase-input MuiOutlinedInput-input css-1x5jdmq"]').type(generateCertificateName())
-    cy.get('input[class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-1uvydh2"][aria-autocomplete="list"]').eq(0).type("{downarrow}{enter}")
-    cy.get('input[class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"][type="checkbox"]').check()
-    cy.get('#root > div.MuiStack-root.css-83v8al > div.MuiStack-root.css-1fxhkkd > div > div.MuiStack-root.css-podk6p > div > div.MuiStack-root.css-onk8hu > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-3.css-5xku6l > div:nth-child(4) > div > div > div > div').click().type("{downarrow}{enter}")
-    cy.get('input[id="sponsor_logo"][type="file"]', { timeout:4000}).attachFile('7111.jpg')
-    cy.wait(3000)
-    cy.get('input[id="stamp_or_signature"][type="file"]', { timeout:4000}).attachFile('7111.jpg')
-     // Intercept the API request
-    cy.intercept('POST', 'https://core-prod-api.techademy.com/api/v1/certificate/cud/').as('createCertificate');
-     // Submit the form
-    cy.contains('Create Certificate').click()
-     // Wait for the API request and validate the response
-    cy.wait('@createCertificate').then((interception) => {
-       // Validate that the response status is 200
-       expect(interception.response.statusCode).to.equal(200);
-    cy.log(interception.response.statusCode)
-    })
-    cy.wait(5000)
-  });
-  it.skip("Catlogue creation", () => {
-    cy.viewport(1500, 1500);
-    cy.wait(2000)
-    cy.visit("https://demoiiht.techademy.com/")
-    cy.get('button[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-mo6xr9"][type="button"]').click()
-    cy.wait(1000)
-    cy.get('[name="username"]').click().type("darshan.kumar@mailinator.com")
-    cy.wait(1000)
-    cy.get('[name="password"]').type("Tr0ngP@ssw0rd!")
-    cy.wait(1000)
-    cy.get('#root > div.MuiGrid-root.MuiGrid-container.css-1d3bbye > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-6.css-eph4u6 > div > div > div > form > div > div.MuiStack-root.css-q7yo2q > div:nth-child(2) > button', {timeout:10000}).click()
-    cy.wait(1000)
-    cy.get('#root > div.MuiStack-root.css-83v8al > div.MuiStack-root.css-1k6ckrn > div.MuiStack-root.css-138wbtw > div.MuiStack-root.css-1ym8bvz', {timeout:10000}).trigger('mouseover');
-    cy.contains('CREATE').click()
-    cy.wait(1000)
-    function generateRandomWord(wordArray) {
-      return wordArray[Math.floor(Math.random() * wordArray.length)];
-    }
-    function generateCatalogueName() {
-      const adjectives = ['Advanced', 'Innovative', 'Creative', 'Dynamic', 'Unique', 'NextGen', 'Premium', 'Elegant'];
-      const nouns = ['Catalogue', 'Collection', 'Series', 'Lineup', 'Selection', 'Range', 'Assortment', 'Array'];
-      const suf = "Automation test"
-      
-      const randomAdjective = generateRandomWord(adjectives);
-      const randomNoun = generateRandomWord(nouns);
-      
-      return `${randomAdjective} ${randomNoun} ${suf}`;
-    }
-    cy.log(generateCatalogueName())
-    cy.get('input[name="name"][class="MuiInputBase-input MuiOutlinedInput-input css-1x5jdmq"]', {timeout:10000}).type(generateCatalogueName())
-    cy.get('input[name="is_assessment_enabled"][type="checkbox"]', {timeout:10000}).check()
-    cy.get('input[name="is_labs_enabled"][type="checkbox"]', {timeout:10000}).check()
-    cy.get('input[name="is_self_enroll_enabled"][type="checkbox"]', {timeout:10000}).check()
-    cy.contains('SAVE AND NEXT', {timeout:10000} ).click()
-    cy.contains('SAVE AND NEXT', {timeout:10000} ).click()
-    cy.wait(1000)
-    cy.intercept('POST', 'https://core-prod-api.techademy.com/api/v1/catalogue/cud/').as('catalogue_creatoin')
-    cy.wait(4000)
-    cy.contains('SAVE AND NEXT', {timeout:10000} ).click()
-    cy.wait('@catalogue_creatoin').then((interception) => {
-      // Validate that the response status is 201
-      cy.wait(10000)
-      expect(interception.response.statusCode).to.equal(201);
-      cy.log(interception.response.statusCode)
-    })
-    cy.wait(5000)
-  })
-  it.skip("course creation", () => {
+ 
+    it("course creation", () => {
     cy.viewport(1500, 1500);
     cy.visit("https://demoiiht.techademy.com/internal-login")
     cy.get('button[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-mo6xr9"][type="button"]').click()
