@@ -74,6 +74,7 @@ describe("API Testing", () => {
       name: "API test ALP",
       proficiency: "basic"    
     }
+    
     cy.get('@authToken').then((token) => {
       cy.request({
         method: 'POST',
