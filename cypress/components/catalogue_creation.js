@@ -92,7 +92,7 @@ class catalogue_creation{
         this.login_button();
         this.click_on_course_and_path();
         this.click_on_create_button();
-        this.user_name_field(name)
+        this.user_name_field(name);
         this.assessment_enable();
         this.is_labs_enabled();
         this.is_self_enroll_enabled();
