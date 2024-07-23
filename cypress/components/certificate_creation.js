@@ -48,11 +48,11 @@ class certificate_creation{
       }
       sopncer_logo(){
         cy.get('input[id="sponsor_logo"][type="file"]', { timeout:4000}).attachFile('7111.jpg')
-        cy.wait(3000)
+        cy.wait(3000);
       }
       signature_logo(){
         cy.get('input[id="stamp_or_signature"][type="file"]', { timeout:4000}).attachFile('7111.jpg')
-        cy.wait(2000)
+        cy.wait(2000);
       }
       click_on_createAPI_and_view_responce(){
          // Intercept the API request
