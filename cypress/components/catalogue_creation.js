@@ -105,4 +105,5 @@ class catalogue_creation{
 
 }
 
+
 export default catalogue_creation
